@@ -1,0 +1,116 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cinzel:wght@400;700&family=Futura&family=Josefin+Sans:wght@400;700&family=Pacifico&family=Playfair+Display+SC:wght@700&display=swap');
+
+
+body {
+  background-color: #000000;  /*Black background*/
+  /* background-color: #F5F5DC; */
+  color: #ffffff; /* White text */
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  font-family: Quicksand;
+  /*font-family: 'Abril Fatface', cursive;*/
+  /* font-family: 'Great Vibes',sans-serif; */
+  /*font-family: 'Tangerine', cursive;*/
+
+  font-size: 1.0rem;
+  /* font-weight: 600; */
+  /* font-family: 'Pacifico',cursive; */
+  
+  }
+
+.hidden {
+  display: none;
+}/*# sourceMappingURL=style.css.map */
+
+#headicon {
+  font-size: 3rem; /* Change icon size */
+  color: #ffffff;  /* Change icon color */
+}
+
+.name{
+  font-family: 'Nunito', serif;
+  font-weight: bolder;
+  font-size: 2.5rem;
+}
+
+/* .spinner-wrapper{
+  background-color: #000000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.spinner-border{
+  height: 60px;
+  width: 60px;
+
+} */
+
+.headerdiv {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.headerdiv h4 {
+  position: absolute;
+  left: 10%;
+  bottom: 1rem;
+  font-size: 1.6rem;
+}
+
+/* Splash screen */
+
+.intro {
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #000000;
+  transition: 1s;
+}
+
+.logo-header {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+}
+
+.logo {
+  position: relative;
+  display: inline-block;
+  bottom: -20px;
+  opacity: 0;
+  
+}
+
+.logo.active {
+  bottom: 0;
+  opacity: 1;
+  transition: ease-in-out 0.5s;
+}
+
+.logo.fade {
+  bottom: 150px;
+  opacity: 0;
+  transition: ease-in-out 0.5s;
+}
