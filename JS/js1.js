@@ -88,6 +88,7 @@ class BudgetTracker
   
   addExpenditure(expenditure)
   {
+    expenditure.date = new Date(); // Set current date
     this._expenditures.push(expenditure);
     this._totalBudget -= expenditure.amount;
     Storage.updateTotalBudget(this._totalBudget);
@@ -100,6 +101,7 @@ class BudgetTracker
 
   addIncome(income)
   {
+    income.date = new Date(); // Set current date
     this._incomes.push(income);
     this._totalBudget += income.amount;
     Storage.updateTotalBudget(this._totalBudget);
@@ -109,6 +111,52 @@ class BudgetTracker
     inc_count++;
     updateFilterStates(inc_count, exp_count);
   }
+
+  
+  _getLast7Days()
+   {
+    const today = new Date();
+    const sevenDaysAgo = new Date(today);
+    sevenDaysAgo.setDate(today.getDate() - 7);
+    return { today, sevenDaysAgo };
+  }
+
+  _calculateWeeklyExpenditure()
+ {
+    const { sevenDaysAgo } = this._getLast7Days();
+
+    return this._expenditures
+
+      .filter((exp) => new Date(exp.date) >= sevenDaysAgo)
+
+      .reduce((sum, exp) => sum + exp.amount, 0);
+
+  }
+
+  _calculateWeeklyIncome() 
+  {
+    const { sevenDaysAgo } = this._getLast7Days();
+
+    return this._incomes
+
+      .filter((inc) => new Date(inc.date) >= sevenDaysAgo)
+
+      .reduce((sum, inc) => sum + inc.amount, 0);
+  }
+
+  updateWeeklySummary()
+   {
+    const weeklyExpenditure = this._calculateWeeklyExpenditure();
+
+    const weeklyIncome = this._calculateWeeklyIncome();
+
+    document.getElementById('daily-expenditure').textContent = weeklyExpenditure;
+
+    document.getElementById('daily-income').textContent = weeklyIncome;
+
+    this.updateChart(weeklyExpenditure, weeklyIncome);
+  }
+
 
   updateDailySummary() 
   {
@@ -319,9 +367,20 @@ class BudgetTracker
 
   {
     const progressEl = document.getElementById('budget-progress');
-    const percentage = ((-this._totalBudget) / this._budgetLimit) * 100;
-    const width = Math.min(percentage, 100);
-    progressEl.style.width = `${width}%`
+    const totalSpent = this._expenditures.reduce((total, expenditure) => total + expenditure.amount, 0);
+    const percentage = (totalSpent / this._budgetLimit) * 100;
+    const width = Math.min(percentage, 100); // Limit the width to 100%
+    
+    progressEl.style.width = `${width}%`;
+  
+    // Change progress bar color based on percentage
+    if (percentage >= 100) {
+      progressEl.classList.add('bg-danger');
+      progressEl.classList.remove('bg-success');
+    } else {
+      progressEl.classList.add('bg-success');
+      progressEl.classList.remove('bg-danger');
+    }
   }
 
   _displayNewExpenditure(expenditure)
@@ -390,6 +449,7 @@ class BudgetTracker
       this.id = Math.random().toString(16).slice(2);
       this.name = name;
       this.amount = amount;
+      this.date = new Date(); // Store the creation date
     }  
     
 }
@@ -402,6 +462,7 @@ class BudgetTracker
       this.id = Math.random().toString(16).slice(2);
       this.name = name;
       this.amount = amount;
+      this.date = new Date(); // Store the creation date
     }  
 
 
@@ -584,6 +645,19 @@ class App
 
     document.getElementById('limit-form')
     .addEventListener('submit', this._setLimit.bind(this));
+
+    document.getElementById('summaryType').addEventListener('change', (e) =>
+      {
+        const selectedType = e.target.value;
+      
+        if (selectedType === 'daily') 
+        {
+          app._tracker.updateDailySummary();
+        } else if (selectedType === 'weekly')
+         {
+          app._tracker.updateWeeklySummary();
+        }
+      });
 
     document.querySelector('[data-bs-target="#collapse-expenditure"]').addEventListener('click', this._scrollToBottom.bind(this));
 
