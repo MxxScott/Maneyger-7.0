@@ -374,12 +374,36 @@ class BudgetTracker
     progressEl.style.width = `${width}%`;
   
     // Change progress bar color based on percentage
-    if (percentage >= 100) {
+    if ( percentage >= 100 ) {
       progressEl.classList.add('bg-danger');
+      progressEl.classList.remove('bg-orange');
+      progressEl.classList.remove('yellow-green');
+      progressEl.classList.remove('bg-success');
+      progressEl.classList.remove('bg-yellow');
+    } else if( percentage >= 75 ) {
+      progressEl.classList.add('bg-orange');
+      progressEl.classList.remove('bg-danger');
+      progressEl.classList.remove('bg-yellow-green');
+      progressEl.classList.remove('bg-yellow');
+      progressEl.classList.remove('bg-success');
+    } else if( percentage >= 50 ) {
+      progressEl.classList.add('bg-yellow');
+      progressEl.classList.remove('bg-danger');
+      progressEl.classList.remove('bg-orange');
+      progressEl.classList.remove('bg-yellow-green');
+      progressEl.classList.remove('bg-success');
+    } else if ( percentage >= 25 ){
+      progressEl.classList.add('bg-yellow-green');
+      progressEl.classList.remove('bg-danger');
+      progressEl.classList.remove('bg-orange');
+      progressEl.classList.remove('bg-yellow');
       progressEl.classList.remove('bg-success');
     } else {
       progressEl.classList.add('bg-success');
       progressEl.classList.remove('bg-danger');
+      progressEl.classList.remove('bg-orange');
+      progressEl.classList.remove('bg-yellow-green');
+      progressEl.classList.remove('bg-yellow');
     }
   }
 

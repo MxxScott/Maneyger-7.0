@@ -23,6 +23,11 @@ body {
   
   }
 
+  #budget-progress
+ {
+    transition: background-color 0.5s ease, width 0.5s ease;
+ }
+  
 .hidden {
   display: none;
 }/*# sourceMappingURL=style.css.map */
@@ -113,4 +118,19 @@ body {
   bottom: 150px;
   opacity: 0;
   transition: ease-in-out 0.5s;
+}
+
+.bg-yellow-green{
+  --bs-bg-opacity: 1;
+  background-color: #AEEA00  !important;
+}
+
+.bg-orange{
+  --bs-bg-opacity: 1;
+  background-color: #FFA500  !important;
+}
+
+.bg-yellow{
+  --bs-bg-opacity: 1;
+  background-color: #FFFF00  !important;
 }
