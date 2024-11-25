@@ -7678,8 +7678,8 @@ textarea.form-control-lg {
 }
 
 .my-3 {
-  margin-top: 1rem !important;
-  margin-bottom: 1rem !important;
+  margin-top: 0rem !important;
+  margin-bottom: 1.5rem !important;
 }
 
 .my-4 {
@@ -7688,7 +7688,7 @@ textarea.form-control-lg {
 }
 
 .my-5 {
-  margin-top: 3rem !important;
+  margin-top: 1.5rem !important;
   margin-bottom: 3rem !important;
 }
 
