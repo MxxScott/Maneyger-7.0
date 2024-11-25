@@ -711,6 +711,14 @@ class App
       }
 
 
+      // Check if name contains a number
+      if (/\d/.test(name.value)) 
+      {
+        alert('Item name should not contain numbers');
+       return;
+      }
+
+
       const expenditure = new Expenditure(name.value, parseInt(amount.value));
 
       this._tracker.addExpenditure(expenditure);
@@ -747,6 +755,7 @@ class App
       if (name.value === '' || amount.value === '')
       {
         alert('Please fill in all fields');
+        
         return;
       }
       if( amount.value <= 0 ){
@@ -754,6 +763,13 @@ class App
         return;
       }
 
+       // Check if name contains a number
+       if (/\d/.test(name.value))
+      {
+      alert('Item name should not contain numbers');
+
+      return;
+      }
 
       const income = new Income(name.value, parseInt(amount.value));
 
