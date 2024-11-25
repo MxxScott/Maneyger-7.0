@@ -1,5 +1,5 @@
 /* Google Fonts Import */
-/* @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cinzel:wght@400;700&family=Futura&family=Josefin+Sans:wght@400;700&family=Pacifico&family=Playfair+Display+SC:wght@700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cinzel:wght@400;700&family=Futura&family=Josefin+Sans:wght@400;700&family=Pacifico&family=Playfair+Display+SC:wght@700&display=swap');
 
 
 body {
@@ -12,7 +12,7 @@ body {
 *::after,
 *::before {
   box-sizing: border-box;
-  font-family: Quicksand;
+  font-family: 'Nunito', serif;
   /*font-family: 'Abril Fatface', cursive;*/
   /* font-family: 'Great Vibes',sans-serif; */
   /*font-family: 'Tangerine', cursive;*/
