@@ -1,7 +1,3 @@
-/* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cinzel:wght@400;700&family=Futura&family=Josefin+Sans:wght@400;700&family=Pacifico&family=Playfair+Display+SC:wght@700&display=swap');
-
-
 body {
   background-color: #000000;  /*Black background*/
   /* background-color: #F5F5DC; */
@@ -12,14 +8,8 @@ body {
 *::after,
 *::before {
   box-sizing: border-box;
-  font-family: 'Nunito', serif;
-  /*font-family: 'Abril Fatface', cursive;*/
-  /* font-family: 'Great Vibes',sans-serif; */
-  /*font-family: 'Tangerine', cursive;*/
-
+  font-family: "Tinos", serif;
   font-size: 1.0rem;
-  /* font-weight: 600; */
-  /* font-family: 'Pacifico',cursive; */
   
   }
 
@@ -38,7 +28,7 @@ body {
 }
 
 .name{
-  font-family: 'Nunito', serif;
+  font-family: "Tinos", serif;
   font-weight: bolder;
   font-size: 2.5rem;
 }
